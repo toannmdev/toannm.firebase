@@ -8,6 +8,7 @@ import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:toannm_firebase/database_page.dart';
 
 import 'auth.dart';
 import 'main.dart';
@@ -319,6 +320,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: _signOut,
                         child: const Text('Sign out'),
                       ),
+                      const Divider(),
+                      TextButton(
+                        onPressed: () => _goToDatabasePage(context),
+                        child: const Text('Go to dabase page'),
+                      ),
                     ],
                   ),
                 ),
@@ -390,5 +396,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<void> _signOut() async {
     await auth.signOut();
     await GoogleSignIn().signOut();
+  }
+
+  void _goToDatabasePage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const DemoDatabase(),
+      ),
+    );
   }
 }
