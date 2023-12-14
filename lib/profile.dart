@@ -9,9 +9,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:toannm_firebase/database_page.dart';
+import 'package:toannm_firebase/storage/storage_page.dart';
 
 import 'auth.dart';
-import 'main.dart';
+import 'config/config.const.dart';
+import 'fcm/fcm_page.dart';
 
 /// Displayed as a profile image if the user doesn't have one.
 const placeholderImage =
@@ -325,6 +327,16 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: () => _goToDatabasePage(context),
                         child: const Text('Go to dabase page'),
                       ),
+                      const Divider(),
+                      TextButton(
+                        onPressed: () => _goToStoragePage(context),
+                        child: const Text('Go to storage page'),
+                      ),
+                      const Divider(),
+                      TextButton(
+                        onPressed: () => _goToSMessagingPage(context),
+                        child: const Text('Go to Message page'),
+                      ),
                     ],
                   ),
                 ),
@@ -402,6 +414,22 @@ class _ProfilePageState extends State<ProfilePage> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) => const DemoDatabase(),
+      ),
+    );
+  }
+
+  void _goToStoragePage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const DemoStorage(),
+      ),
+    );
+  }
+
+  void _goToSMessagingPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const MessagingPage(),
       ),
     );
   }

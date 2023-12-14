@@ -117,6 +117,7 @@ class _DemoDatabaseState extends State<DemoDatabase> {
     try {
       final transactionResult = await _counterRef.runTransaction((mutableData) {
         return Transaction.success((mutableData as int? ?? 0) + 1);
+        // return Transaction.abort();
       });
 
       if (transactionResult.committed) {

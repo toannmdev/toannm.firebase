@@ -7,30 +7,17 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in_dartio/google_sign_in_dartio.dart';
 
 import 'auth.dart';
+import 'config/config.const.dart';
+import 'config/config.fcm.dart';
 import 'firebase_options.dart';
 import 'profile.dart';
-
-/// Requires that a Firebase local emulator is running locally.
-/// See https://firebase.flutter.dev/docs/auth/start/#optional-prototype-and-test-with-firebase-local-emulator-suite
-bool shouldUseFirebaseEmulator = false;
-
-late final FirebaseApp app;
-late final FirebaseAuth auth;
-
-final emulatorHost =
-    (!kIsWeb && defaultTargetPlatform == TargetPlatform.android)
-        ? '10.0.2.2'
-        : 'localhost';
-
-// The port we've set the Firebase Database emulator to run on via the
-// `firebase.json` configuration file. https://firebase.google.com/docs/emulator-suite/install_and_configure#port_configuration
-const emulatorAuthPort = 9099;
-const emulatorRTDBPort = 9000;
 
 // Requires that the Firebase Auth emulator is running locally
 // e.g via `melos run firebase:emulator`.
@@ -48,7 +35,11 @@ Future<void> main() async {
   if (shouldUseFirebaseEmulator) {
     await auth.useAuthEmulator(emulatorHost, emulatorAuthPort);
 
-    FirebaseDatabase.instance.useDatabaseEmulator(emulatorHost, emulatorRTDBPort);
+    FirebaseDatabase.instance
+        .useDatabaseEmulator(emulatorHost, emulatorRTDBPort);
+
+    await FirebaseStorage.instance
+        .useStorageEmulator(emulatorHost, emulatorStorePort);
   }
 
   if (!kIsWeb && Platform.isWindows) {
@@ -58,12 +49,16 @@ Future<void> main() async {
     );
   }
 
+  // Set the background messaging handler early on, as a named top-level function
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
+  if (!kIsWeb) {
+    await setupFlutterNotifications();
+  }
+
   runApp(const AuthExampleApp());
 }
 
-/// The entry point of the application.
-///
-/// Returns a [MaterialApp].
 class AuthExampleApp extends StatelessWidget {
   const AuthExampleApp({Key? key}) : super(key: key);
 
