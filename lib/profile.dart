@@ -13,7 +13,8 @@ import 'package:toannm_firebase/storage/storage_page.dart';
 
 import 'auth.dart';
 import 'config/config.const.dart';
-import 'fcm/fcm_page.dart';
+import 'message/fcm/fcm_page.dart';
+import 'message/inapp/inapp_page.dart';
 
 /// Displayed as a profile image if the user doesn't have one.
 const placeholderImage =
@@ -309,8 +310,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             await user.multiFactor.unenroll(
                               factorUid: enrolledFactors.first.uid,
                             );
-                            // Show snackbar
-                            ScaffoldSnackbar.of(context).show('MFA unenrolled');
+                            if (context.mounted) {
+                              // Show snackbar
+                              ScaffoldSnackbar.of(context)
+                                  .show('MFA unenrolled');
+                            }
                           } catch (e) {
                             print(e);
                           }
@@ -336,6 +340,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       TextButton(
                         onPressed: () => _goToSMessagingPage(context),
                         child: const Text('Go to Message page'),
+                      ),
+                      const Divider(),
+                      TextButton(
+                        onPressed: () => _goToSInAppPage(context),
+                        child: const Text('Go to InAppMessage page'),
                       ),
                     ],
                   ),
@@ -430,6 +439,14 @@ class _ProfilePageState extends State<ProfilePage> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) => const MessagingPage(),
+      ),
+    );
+  }
+
+  void _goToSInAppPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const InAppPage(),
       ),
     );
   }

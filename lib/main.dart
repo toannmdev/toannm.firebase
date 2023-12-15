@@ -17,6 +17,7 @@ import 'auth.dart';
 import 'config/config.const.dart';
 import 'config/config.fcm.dart';
 import 'firebase_options.dart';
+import 'message/inapp/inapp_page.dart';
 import 'profile.dart';
 
 // Requires that the Firebase Auth emulator is running locally
@@ -55,6 +56,8 @@ Future<void> main() async {
   if (!kIsWeb) {
     await setupFlutterNotifications();
   }
+
+  initFirebaseInApp();
 
   runApp(const AuthExampleApp());
 }

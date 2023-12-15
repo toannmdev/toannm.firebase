@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E11921648E5359168D2EFF0 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0EB23AA92D89AE2431B7A5 /* Pods_RunnerTests.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		2940276FD93E1813EEBB8E39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA12DEC0F0C631204422E5E0 /* GoogleService-Info.plist */; };
 		2C22E3C935F6C1C8AE2739A1 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C08BAAA6CE52A5070CC5134 /* Pods_Runner.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -68,6 +69,7 @@
 		9E0EB23AA92D89AE2431B7A5 /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29000DB7C35236E8A2AFA89 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
 		DA7A7FE026FA2F32FD8F43F7 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		FA12DEC0F0C631204422E5E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				8B5A74178AEEF402C5544041 /* Pods */,
 				561B6A5A277B0C83C52985D0 /* Frameworks */,
+				FA12DEC0F0C631204422E5E0 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,6 +272,7 @@
 				9C8B48782B2AAF750037AC5A /* GoogleService-Info.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+				2940276FD93E1813EEBB8E39 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

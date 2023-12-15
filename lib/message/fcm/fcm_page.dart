@@ -4,11 +4,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:toannm_firebase/fcm/permissions.dart';
 
-import '../config/config.fcm.dart';
+import '../../config/config.fcm.dart';
 import 'message.dart';
 import 'message_list.dart';
+import 'permissions.dart';
 import 'token_monitor.dart';
 
 /// Entry point for the example application.

@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 /// Requires that a Firebase local emulator is running locally.
 /// See https://firebase.flutter.dev/docs/auth/start/#optional-prototype-and-test-with-firebase-local-emulator-suite
-bool shouldUseFirebaseEmulator = true;
+bool shouldUseFirebaseEmulator = false;
 
 late final FirebaseApp app;
 late final FirebaseAuth auth;
