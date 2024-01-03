@@ -13,6 +13,7 @@ import 'package:toannm_firebase/storage/storage_page.dart';
 
 import 'auth.dart';
 import 'config/config.const.dart';
+import 'drive/drive_page.dart';
 import 'message/fcm/fcm_page.dart';
 import 'message/inapp/inapp_page.dart';
 
@@ -338,13 +339,18 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       const Divider(),
                       TextButton(
-                        onPressed: () => _goToSMessagingPage(context),
+                        onPressed: () => _goToMessagingPage(context),
                         child: const Text('Go to Message page'),
                       ),
                       const Divider(),
                       TextButton(
-                        onPressed: () => _goToSInAppPage(context),
+                        onPressed: () => _goToInAppPage(context),
                         child: const Text('Go to InAppMessage page'),
+                      ),
+                      const Divider(),
+                      TextButton(
+                        onPressed: () => _goToDrivePagePage(context),
+                        child: const Text('Go to Drive page'),
                       ),
                     ],
                   ),
@@ -435,7 +441,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _goToSMessagingPage(BuildContext context) {
+  void _goToMessagingPage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) => const MessagingPage(),
@@ -443,10 +449,18 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _goToSInAppPage(BuildContext context) {
+  void _goToInAppPage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) => const InAppPage(),
+      ),
+    );
+  }
+
+  void _goToDrivePagePage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const DrivePage(),
       ),
     );
   }
